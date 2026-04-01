@@ -416,3 +416,10 @@ FodyWeavers.xsd
 *.msix
 *.msm
 *.msp
+
+# API Keys
+api-key.txt
+
+# Build output
+bin/
+obj/
