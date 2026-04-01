@@ -1,0 +1,27 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:vm="using:RagDemo.App.ViewModels"
+        xmlns:views="using:RagDemo.App.Views"
+        x:Class="RagDemo.App.Views.MainWindow"
+        x:DataType="vm:MainWindowViewModel"
+        Icon="/Assets/avalonia-logo.ico"
+        Title="RAG Demo"
+        Width="1000" Height="700">
+
+    <Design.DataContext>
+        <vm:MainWindowViewModel/>
+    </Design.DataContext>
+
+    <TabControl>
+
+        <TabItem Header="Documents">
+            <views:DocumentView DataContext="{Binding Documents}"/>
+        </TabItem>
+
+        <TabItem Header="Query">
+            <views:QueryView DataContext="{Binding Query}"/>
+        </TabItem>
+
+    </TabControl>
+
+</Window>

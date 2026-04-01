@@ -1,0 +1,61 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:vm="using:RagDemo.App.ViewModels"
+             x:Class="RagDemo.App.Views.QueryView"
+             x:DataType="vm:QueryViewModel">
+
+    <Grid RowDefinitions="Auto,*" Margin="16">
+
+        <StackPanel Grid.Row="0" Spacing="12">
+
+            <TextBlock Text="Question" FontWeight="SemiBold"/>
+            <TextBox Text="{Binding Question}"
+                     Watermark="Ask a question about your documents..."
+                     AcceptsReturn="False"/>
+
+            <StackPanel Orientation="Horizontal" Spacing="8">
+                <Button Content="Ask"
+                        Command="{Binding QueryCommand}"
+                        IsEnabled="{Binding !IsBusy}"/>
+                <Button Content="Ask (Stream)"
+                        Command="{Binding QueryStreamCommand}"
+                        IsEnabled="{Binding !IsBusy}"/>
+                <Button Content="Cancel"
+                        Command="{Binding QueryStreamCancelCommand}"
+                        IsVisible="{Binding IsBusy}"/>
+            </StackPanel>
+
+            <TextBlock Text="{Binding StatusMessage}" Foreground="Gray"/>
+
+        </StackPanel>
+
+        <Grid Grid.Row="1" ColumnDefinitions="*,Auto,300" Margin="0,16,0,0">
+
+            <StackPanel Grid.Column="0" Spacing="8">
+                <TextBlock Text="Answer" FontWeight="SemiBold"/>
+                <ScrollViewer>
+                    <TextBlock Text="{Binding Answer}" TextWrapping="Wrap"/>
+                </ScrollViewer>
+            </StackPanel>
+
+            <GridSplitter Grid.Column="1" Width="4" ResizeDirection="Columns"/>
+
+            <StackPanel Grid.Column="2" Spacing="8" Margin="8,0,0,0">
+                <TextBlock Text="Source Chunks" FontWeight="SemiBold"/>
+                <ScrollViewer>
+                    <ItemsControl ItemsSource="{Binding SourceChunks}">
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate>
+                                <Border Background="#1A000000" CornerRadius="4" Margin="0,0,0,8" Padding="8">
+                                    <TextBlock Text="{Binding}" TextWrapping="Wrap" FontSize="11"/>
+                                </Border>
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+                    </ItemsControl>
+                </ScrollViewer>
+            </StackPanel>
+
+        </Grid>
+
+    </Grid>
+</UserControl>

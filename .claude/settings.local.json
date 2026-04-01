@@ -1,0 +1,9 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(dotnet build:*)",
+      "Bash(powershell -Command \"Move-Item -Path 'backend\\\\RagDemo.Api' -Destination 'RagDemo.Api' -Force\")",
+      "Bash(powershell -Command \"Move-Item -Path 'frontend\\\\RagDemo.App' -Destination 'RagDemo.App' -Force\")"
+    ]
+  }
+}
