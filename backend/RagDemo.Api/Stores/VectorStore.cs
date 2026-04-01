@@ -44,7 +44,8 @@ public class VectorStore
     }
 
     /// <summary>
-    /// 
+    /// Searches the vector store for chunks most semantically similar to the query embedding.
+    /// Results are ranked by cosine similarity and filtered by a minimum score threshold.
     /// </summary>
     /// <param name="queryEmbedding">Vectors representation of texts.</param>
     /// <param name="topK">Number of results to return.</param>
@@ -98,6 +99,8 @@ public class VectorStore
             magnitudeB += vectorB[i] * vectorB[i];
         }
 
-        return dotProduct / (MathF.Sqrt(magnitudeA) * MathF.Sqrt(magnitudeB));
+        float magnitude = MathF.Sqrt(magnitudeA) * MathF.Sqrt(magnitudeB);
+
+        return magnitude != 0 ? dotProduct / magnitude : 0;
     }
 }

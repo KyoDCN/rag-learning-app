@@ -14,10 +14,10 @@ public class UserSessionHttpContext(IHttpContextAccessor httpContextAccessor) : 
             string? xSessionId = httpContextAccessor.HttpContext!.Request.Headers["X-Session-Id"].ToString();
 
             if (string.IsNullOrWhiteSpace(xSessionId)) 
-                throw new Exception("Proper Session ID (Guid) must be provided.");
+                throw new ArgumentException("Proper Session ID (Guid) must be provided.");
 
             if (!Guid.TryParse(xSessionId, out Guid sessionId))
-                throw new Exception("Session ID must be a valid Guid.");
+                throw new ArgumentException("Session ID must be a valid Guid.");
 
             return field = new(sessionId);
         }

@@ -105,10 +105,6 @@ public class RagService
 
                     IReadOnlyList<string> chunks = ChunkText(text, chunkSize, overlap);
 
-                    // Console.WriteLine($"Total chunks created: {chunks.Count}");
-                    // foreach (string chunk in chunks)
-                    //     Console.WriteLine($"CHUNK: {chunk}");
-
                     foreach (string chunk in chunks)
                     {
                         float[] embedding = await m_embeddingService.ToEmbeddingAsync(chunk);

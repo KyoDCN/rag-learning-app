@@ -10,10 +10,11 @@
 using System;
 using System.Reflection;
 
+[assembly: Microsoft.Extensions.Configuration.UserSecrets.UserSecretsIdAttribute("f7b722b9-d252-45bc-867b-62d72b9e0bc8")]
 [assembly: System.Reflection.AssemblyCompanyAttribute("RagDemo.Api")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+463acdc2b9e49279b4408cf8df9ce7a53cbd13b2")]
 [assembly: System.Reflection.AssemblyProductAttribute("RagDemo.Api")]
 [assembly: System.Reflection.AssemblyTitleAttribute("RagDemo.Api")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

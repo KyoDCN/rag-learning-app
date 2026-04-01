@@ -1,3 +1,5 @@
+using System.ComponentModel.DataAnnotations;
+
 namespace RagDemo.Api.DTOs;
 
-public record LoadDocumentRequest(string DocumentText, string DocumentName);
+public record LoadDocumentRequest([Required, MinLength(1)] string DocumentText, [Required, MinLength(1)] string DocumentName);

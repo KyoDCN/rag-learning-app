@@ -5,7 +5,13 @@ namespace RagDemo.Api.Managers;
 public class UserSessionManager
 {
     private readonly ConcurrentDictionary<SessionId, UserSession> m_sessions = [];
-    private readonly TimeSpan m_expiration = TimeSpan.FromHours(1);
+    private readonly TimeSpan m_expiration;
+
+    public UserSessionManager(IConfiguration config)
+    {
+        int expirationHours = config.GetValue<int>("UserSession:ExpirationHours", 1);
+        m_expiration = TimeSpan.FromHours(expirationHours);
+    }
 
     public bool AddSession(SessionId sessionId)
     {
