@@ -17,12 +17,13 @@ public class RagService
     private readonly UserSessionManager m_userSessionManager;
     private readonly IUserSessionHttpContext m_userSessionHttpContext;
     private readonly ChatClient m_chatClient;
+    private readonly float m_defaultThreshold;
 
     public RagService(
         ILogger<RagService> logger,
-        EmbeddingService embedding, 
-        UserSessionManager userSession, 
-        IUserSessionHttpContext userSessionHttpContext, 
+        EmbeddingService embedding,
+        UserSessionManager userSession,
+        IUserSessionHttpContext userSessionHttpContext,
         IConfiguration config)
     {
         m_logger = logger;
@@ -30,6 +31,7 @@ public class RagService
         m_userSessionManager = userSession;
         m_userSessionHttpContext = userSessionHttpContext;
         m_chatClient = new("gpt-4o-mini", config["OpenAI:ApiKey"]!);
+        m_defaultThreshold = config.GetValue<float>("Rag:DefaultThreshold", 0.5f);
     }
 
     public VectorStoreStatus GetVectorStoreStatus()
@@ -132,7 +134,11 @@ public class RagService
 
         UserSession userSession = m_userSessionManager.GetOrAddSession(sessionId);
 
-        IReadOnlyList<DocumentChunk> relevantChunks = userSession.VectorStore.FindSimilar(questionEmbedding, request.TopK, request.Threshold);
+        m_logger.LogInformation("Query received for session {SessionId} — store has {ChunkCount} chunk(s)", sessionId, userSession.VectorStore.Count);
+
+        IReadOnlyList<DocumentChunk> relevantChunks = userSession.VectorStore.FindSimilar(questionEmbedding, request.TopK, request.Threshold ?? m_defaultThreshold);
+
+        m_logger.LogInformation("Found {RelevantCount} relevant chunk(s) for session {SessionId}", relevantChunks.Count, sessionId);
 
         string context = string.Join("\n\n---\n\n", relevantChunks.Select(c => c.Text));
 
@@ -171,7 +177,7 @@ public class RagService
 
         UserSession userSession = m_userSessionManager.GetOrAddSession(sessionId);
 
-        IReadOnlyList<DocumentChunk> relevantChunks = userSession.VectorStore.FindSimilar(questionEmbedding, request.TopK, request.Threshold);
+        IReadOnlyList<DocumentChunk> relevantChunks = userSession.VectorStore.FindSimilar(questionEmbedding, request.TopK, request.Threshold ?? m_defaultThreshold);
         string context = string.Join("\n\n---\n\n", relevantChunks.Select(c => c.Text));
 
         string systemPrompt = """
