@@ -1,0 +1,33 @@
+{
+  "version": 2,
+  "dgSpecHash": "2V4wgPngWw4=",
+  "success": true,
+  "projectFilePath": "C:\\Source\\Repos\\retrieval-augmented-generation-app\\backend\\RagDemo.Api\\RagDemo.Api.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\dcnoe\\.nuget\\packages\\microsoft.aspnetcore.cors\\2.3.9\\microsoft.aspnetcore.cors.2.3.9.nupkg.sha512",
+    "C:\\Users\\dcnoe\\.nuget\\packages\\microsoft.aspnetcore.openapi\\10.0.4\\microsoft.aspnetcore.openapi.10.0.4.nupkg.sha512",
+    "C:\\Users\\dcnoe\\.nuget\\packages\\microsoft.extensions.apidescription.server\\10.0.0\\microsoft.extensions.apidescription.server.10.0.0.nupkg.sha512",
+    "C:\\Users\\dcnoe\\.nuget\\packages\\microsoft.openapi\\2.4.1\\microsoft.openapi.2.4.1.nupkg.sha512",
+    "C:\\Users\\dcnoe\\.nuget\\packages\\openai\\2.9.1\\openai.2.9.1.nupkg.sha512",
+    "C:\\Users\\dcnoe\\.nuget\\packages\\swashbuckle.aspnetcore\\10.1.7\\swashbuckle.aspnetcore.10.1.7.nupkg.sha512",
+    "C:\\Users\\dcnoe\\.nuget\\packages\\swashbuckle.aspnetcore.swagger\\10.1.7\\swashbuckle.aspnetcore.swagger.10.1.7.nupkg.sha512",
+    "C:\\Users\\dcnoe\\.nuget\\packages\\swashbuckle.aspnetcore.swaggergen\\10.1.7\\swashbuckle.aspnetcore.swaggergen.10.1.7.nupkg.sha512",
+    "C:\\Users\\dcnoe\\.nuget\\packages\\swashbuckle.aspnetcore.swaggerui\\10.1.7\\swashbuckle.aspnetcore.swaggerui.10.1.7.nupkg.sha512",
+    "C:\\Users\\dcnoe\\.nuget\\packages\\system.clientmodel\\1.9.0\\system.clientmodel.1.9.0.nupkg.sha512",
+    "C:\\Users\\dcnoe\\.nuget\\packages\\system.memory.data\\10.0.1\\system.memory.data.10.0.1.nupkg.sha512"
+  ],
+  "logs": [
+    {
+      "code": "NU1510",
+      "level": "Warning",
+      "message": "PackageReference Microsoft.AspNetCore.Cors will not be pruned. Consider removing this package from your dependencies, as it is likely unnecessary.",
+      "projectPath": "C:\\Source\\Repos\\retrieval-augmented-generation-app\\backend\\RagDemo.Api\\RagDemo.Api.csproj",
+      "warningLevel": 1,
+      "filePath": "C:\\Source\\Repos\\retrieval-augmented-generation-app\\backend\\RagDemo.Api\\RagDemo.Api.csproj",
+      "libraryId": "Microsoft.AspNetCore.Cors",
+      "targetGraphs": [
+        "net10.0"
+      ]
+    }
+  ]
+}

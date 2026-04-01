@@ -1,0 +1,13 @@
+root = true
+
+[*.cs]
+# Naming rule: private fields must use m_ prefix
+dotnet_naming_rule.private_fields_must_use_m_prefix.symbols = private_fields
+dotnet_naming_rule.private_fields_must_use_m_prefix.style = m_prefix_style
+dotnet_naming_rule.private_fields_must_use_m_prefix.severity = warning
+
+dotnet_naming_symbols.private_fields.applicable_kinds = field
+dotnet_naming_symbols.private_fields.applicable_accessibilities = private
+
+dotnet_naming_style.m_prefix_style.required_prefix = m_
+dotnet_naming_style.m_prefix_style.capitalization = camel_case
